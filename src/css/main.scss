@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;800&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+:root {
+	--clr-red: #f65351;
+	--clr-blue: #0a317b;
+	--clr-white: #fff;
+	--clr-verylight-grayish-blue: #f7fafd;
+	--clr-light-grayish-blue-1: #e5effa;
+	--clr-light-grayish-blue-2: #dde7ee;
+	--clr-grayish-blue: #939dae;
+	--clr-dark-grayish-blue: #5e6778;
+	--clr-verydark-blue: #1c202b;
+	--ff-body: 'Plus Jakarta Sans', sans-serif;
+	--fw-medium: 500;
+	--fw-extrabold: 800;
+}
+
+$mediaMinWidth_desktop: 730px;
+$footerMaxHeight: 2.5rem;
+
+body {
+	font-family: var(--ff-body);
+	background: var(--clr-verylight-grayish-blue);
+}
+
+main {
+	overflow: auto;
+
+	.container {
+		height: calc(100vh - $footerMaxHeight);
+		min-width: 375px;
+		max-width: 375px;
+		margin-inline: auto;
+		display: grid;
+		align-items: center;
+
+		@media screen and (min-width: $mediaMinWidth_desktop) {
+			max-width: $mediaMinWidth_desktop;
+		}
+
+		.inner-container {
+			.main-grid {
+				padding: 1.5rem 1rem;
+				background: var(--clr-white);
+
+				@media screen and (min-width: $mediaMinWidth_desktop) {
+					padding: 2rem;
+					border-radius: 1rem;
+				}
+
+				h1 {
+					font-size: 1.25rem;
+					display: flex;
+					align-items: center;
+					margin-bottom: 1.5rem;
+					color: var(--clr-verydark-blue);
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						font-size: 1.5rem;
+						margin-bottom: 2rem;
+					}
+
+					.unread-count {
+						font-size: 1rem;
+						background: var(--clr-blue);
+						color: var(--clr-white);
+						margin-left: 0.6rem;
+						padding: 0.1rem 0.7rem;
+						border-radius: 0.4rem;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							margin-left: 0.75rem;
+						}
+					}
+
+					.mark-all-read-button {
+						font-size: 0.91rem;
+						font-weight: var(--fw-medium);
+						word-spacing: -0.05em;
+						margin-left: auto;
+						border: none;
+						background: none;
+						cursor: pointer;
+						color: var(--clr-dark-grayish-blue);
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							font-size: 1.0325rem;
+							word-spacing: -0.06em;
+						}
+
+						&:hover {
+							color: var(--clr-blue);
+						}
+					}
+				}
+
+				.notification {
+					display: flex;
+					gap: 0.8rem;
+					padding: 1rem;
+					padding-right: 0.9rem;
+					margin-bottom: 0.6rem;
+					color: var(--clr-dark-grayish-blue);
+					border-radius: 0.5rem;
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						gap: 1.15rem;
+						padding: 1.1rem;
+						margin-bottom: 0.5rem;
+					}
+
+					&__avatar-image {
+						width: 39px;
+						height: 39px;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							width: 45px;
+							height: 45px;
+						}
+					}
+
+					&__text-content {
+						display: grid;
+						gap: 0.25rem;
+
+						h2 {
+							all: unset;
+							font-size: 0.88rem;
+							position: relative;
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								font-size: 1.005rem;
+							}
+
+							.name {
+								letter-spacing: -0.003em;
+								font-weight: var(--fw-extrabold);
+								color: var(--clr-verydark-blue);
+								margin-right: 0.25em;
+							}
+
+							.post-link,
+							.group-link {
+								letter-spacing: -0.01em;
+								font-weight: var(--fw-extrabold);
+								text-decoration: none;
+								color: var(--clr-dark-grayish-blue);
+								margin-left: 0.25em;
+
+								@media screen and (min-width: $mediaMinWidth_desktop) {
+									letter-spacing: 0;
+								}
+							}
+
+							.group-link {
+								line-height: 0.1;
+								color: var(--clr-blue);
+							}
+						}
+
+						.time-ago {
+							display: block;
+							font-size: 0.87rem;
+							color: var(--clr-grayish-blue);
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								font-size: 1rem;
+							}
+						}
+
+						.message {
+							font-size: 0.875rem;
+							border: 1px solid var(--clr-light-grayish-blue-2);
+							padding: 0.95rem;
+							margin-top: 0.5rem;
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								font-size: 1rem;
+								padding: 1rem 1.15rem;
+							}
+						}
+					}
+
+					.picture-image {
+						width: 45px;
+						height: 45px;
+						margin-left: auto;
+					}
+
+					&.unread {
+						background: var(--clr-verylight-grayish-blue);
+
+						h2 {
+							&::after {
+								content: '•';
+								font-size: 1.4rem;
+								line-height: 0;
+								color: var(--clr-red);
+								margin-left: 0.25rem;
+								margin-top: 0.45rem;
+								position: absolute;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+footer {
+	font-size: 0.8rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0.25rem;
+	text-align: center;
+	height: $footerMaxHeight;
+	display: grid;
+	place-content: center;
+	background: #fff;
+
+	a {
+		color: blue;
+	}
+}
